@@ -24,7 +24,7 @@ class DataIngestion:
         self.ingestion_config=DataIngestionConfig()
 
     def initiate_data_ingestion(self):
-        logging.info("Entered the data ingestion method or component")
+        logging.info("Entered into the data ingestion method or component.")
         try:
             df=pd.read_csv('notebook\data\PS_20174392719_1491204439457_log.csv')
             logging.info('Reading the Dataset')
@@ -33,14 +33,14 @@ class DataIngestion:
 
             #df.to_csv(self.ingestion_config.raw_data_path,index=False,header=True)
 
-            logging.info("Splitting the dataset into train and test")
+            logging.info("Splitting the dataset into train and test...")
             train_set,test_set=train_test_split(df,test_size=0.20,random_state=42)
 
             train_set.to_csv(self.ingestion_config.train_data_path,index=False,header=True)
 
             test_set.to_csv(self.ingestion_config.test_data_path,index=False,header=True)
 
-            logging.info("Data Ingestion is completed")
+            logging.info("Data ingestion is completed!")
 
             return(
                 self.ingestion_config.train_data_path,

@@ -21,7 +21,7 @@ def cat_num_features(df):
     catf = []
     numf = []
 
-    logging.info("Extracting Categorical and Numerical Features")
+    logging.info("Extracting Categorical and Numerical features...")
 
     catf = ['type','nameOrig'
             ,'nameDest','type2']
@@ -55,10 +55,6 @@ class DataTransformation:
         self.data_transformation_config=DataTransformationConfig()
 
     def get_data_transformer_object(self,df):
-        '''
-        This function si responsible for data trnasformation
-        
-        '''
         try:
             categorical_columns, numerical_columns = cat_num_features(df)
 
@@ -101,8 +97,8 @@ class DataTransformation:
         try:
             train_df=pd.read_csv(train_path)
             test_df=pd.read_csv(test_path)
-            logging.info("Read train and test data completed")
-            logging.info("New feature is adding")
+            logging.info("Read train and test data completed!")
+            logging.info("New feature is adding...")
             train_df = type2_create(train_df)
             test_df = type2_create(test_df)
             logging.info(f"Features are: {train_df.columns}")
@@ -115,12 +111,12 @@ class DataTransformation:
             input_feature_test_df=test_df.drop(columns=[target_column_name],axis=1)
             target_feature_test_df=test_df[target_column_name]
 
-            logging.info("Obtaining preprocessing object")
+            logging.info("Obtaining preprocessing object...")
 
             preprocessing_obj=self.get_data_transformer_object(train_df)
 
             logging.info(
-                f"Applying preprocessing object on training dataframe and testing dataframe."
+                f"Applying preprocessing object on training dataframe and testing dataframe..."
             )
 
             input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
